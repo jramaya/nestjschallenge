@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { ApiService } from 'src/api/api.service';
 import { Person } from 'src/person';
 
@@ -13,5 +13,10 @@ export class V2Controller {
   @Get()
   getPersons() {
     return this.apiService.getPersons();
+  }
+
+  @Delete(':id')
+  deletePersons(@Param() params) {
+    return this.apiService.deletePersons(params.id);
   }
 }

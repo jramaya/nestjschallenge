@@ -3,14 +3,29 @@ import { Person } from 'src/person';
 
 @Injectable()
 export class ApiService {
-  persons: Array<Person> = [];
+  persons: Array<Person> = [
+    {
+      id: 1,
+      name: "Aldo",
+      age: 21
+    },
+    {
+      id: 2,
+      name: "Kate",
+      age: 28
+    }
+  ];
+
 
   getPersons(): Array<Person> {
-    return this.persons;
+    return this.persons.filter(n=>n);
   }
 
   setPerson(person: Person) {
-    console.log(person)
-      this.persons.push(person);
+    this.persons.push(person);
+  }
+
+  deletePersons(id: number) {
+    delete this.persons[this.persons.findIndex(n => n?.id == id)];
   }
 }
